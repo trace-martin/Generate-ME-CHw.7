@@ -47,27 +47,26 @@ const questions = [
         name: 'questions'
     },
 ];
-console.log()
-// TODO: Create a function to write README file
-// function writeToFile(title, description, installation, usage, license, contributing, tests, questions) {
 
-//   fs.writeFile('README.md', content, err => {
-//     if (err) {
-//       console.error(err);
-//       return;
-//     }
-//     console.log('README.md file generated!');
-//   });
-// }
+// TODO: Create a function to write README file
+function writeToFile(title, description, installation, usage, license, contributing, tests, questions) {
+    const content = markDown
+    fs.writeFile('README.md', content, err => {
+        if (err) {
+          console.error(err);
+          return;
+    }
+    console.log('README.md file generated!');
+  });
+}
 
 // TODO: Create a function to initialize app
 function init() {
     return inquirer.prompt(questions)
-    .then((answers) => {
-        const gen = markDown.generateMarkdown(answers)
-        console.log(gen)
-        // fs.writeFile('README.md', answers);
-    })
+    // .then((data) => {
+    //     const gen = markDown.generateMarkdown(data)
+    //     fs.writeFile('/gen/README.md', gen);
+    // })
     .catch((err) => {
         console.error("Uh Oh", err)
     })

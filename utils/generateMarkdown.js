@@ -1,21 +1,45 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+function renderLicenseBadge(license) {
+  const badges = {
+    mit: '[![License:'
+    
+  }
+   if(license) {
+     return badges[license]
+  } else {
+    return ''
+  }
+}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  const licenseLink = {
+    mit: 'hello'
+
+  }
+  return licenseLink[license]
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+  if(license){
+    return `This project is licensed under the ${data.license} license.`
+  } else {
+    return ''
+  }
+}
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(answers) {
+function generateMarkdown(data) {
   return `
-  # ${answers.title}
+  # ${data.title}
+
+  ${renderLicenseBadge(data.license)}
   
-  ${answers.description}
+  ${data.description}
 
   ## Table of Contents
 
@@ -28,29 +52,29 @@ function generateMarkdown(answers) {
 
   ## Installation
 
-  ${answers.installation}
+  ${data.installation}
 
   ## Usage
 
-  ${answers.usage}
+  ${data.usage}
 
   ## License
 
-  This project is licensed under the ${answers.license} license.
+  ${renderLicenseBadge(data.license)}
+  ${renderLicenseSection(data.license)}
 
-  // need to add badges and selection for license
 
   ## Contributing
 
-  ${answers.contributing}
+  ${data.contributing}
 
   ## Tests
 
-  ${answers.tests}
+  ${data.tests}
   
   ## Questions
 
-  ${answers.questions}`;
+  ${data.questions}`;
 }
 
 module.exports = generateMarkdown;
