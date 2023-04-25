@@ -1,88 +1,77 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const markDown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const questions = [
     {
         type: 'input',
-        message: 'message here',
-        name: 'name of key to call'
+        message: 'What is the title of your project?',
+        name: 'title'
     },
     {
         type: 'input',
-        message: 'message here',
-        name: 'name of key to call'
+        message: 'Please describe your project',
+        name: 'description'
     },
     {
         type: 'input',
-        message: 'message here',
-        name: 'name of key to call'
+        message: 'How do you install this project?',
+        name: 'installation'
     },
     {
         type: 'input',
-        message: 'message here',
-        name: 'name of key to call'
+        message: 'What is the usage of this project?',
+        name: 'usage'
     },
-        {
+    {
+        type: 'list',
+        message: 'What is the license for this project?',
+        name: 'license',
+        choices: ['MIT License', 'GPL License', 'Apache License', 'GNU License', 'N/A']
+    },
+    {
         type: 'input',
-        message: 'message here',
-        name: 'name of key to call'
+        message: 'Who can contribute to this project?',
+        name: 'contributing'
+    },
+    {
+        type: 'input',
+        message: 'What are the tests',
+        name: 'tests'
+    },
+    {
+        type: 'input',
+        message: 'How can someone get intouch with you about Questions on the Project?',
+        name: 'questions'
     },
 ];
-
+console.log()
 // TODO: Create a function to write README file
-function writeToFile(title, description, installation, usage, licecnse, contributers, test, questions) {
-    const readMeContent = `
-    # ${title}
-    
-    ${description}
+// function writeToFile(title, description, installation, usage, license, contributing, tests, questions) {
 
-    ## Table of Contents
-
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [License](#license)
-    - [Contributing](#contributing)
-    - [Tests](#tests)
-    - [Questions](#questions)
-
-    ## Installation
-
-    ${installation}
-
-    ## Usage
-
-    ${usage}
-
-    ## License
-
-    This project is licensed under the ${license} license.
-
-    ## Contributing
-
-    ${contributing}
-
-    ## Tests
-
-    ${tests}`;
-
-  fs.writeFile('README.md', content, err => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    console.log('README.md file generated!');
-  });
-}
+//   fs.writeFile('README.md', content, err => {
+//     if (err) {
+//       console.error(err);
+//       return;
+//     }
+//     console.log('README.md file generated!');
+//   });
+// }
 
 // TODO: Create a function to initialize app
 function init() {
-    inquirer.prompt(questions)
-    .then(answers => {
-        writeToFile(answers);
+    return inquirer.prompt(questions)
+    .then((answers) => {
+        const gen = markDown.generateMarkdown(answers)
+        console.log(gen)
+        // fs.writeFile('README.md', answers);
     })
-}
+    .catch((err) => {
+        console.error("Uh Oh", err)
+    })
+};
 
 // Function call to initialize app
 init();
