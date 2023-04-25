@@ -40,18 +40,48 @@ function writeToFile(title, description, installation, usage, licecnse, contribu
 
     ## Table of Contents
 
-    - [Installation](#)
-    
-    `
+    - [Installation](#installation)
+    - [Usage](#usage)
+    - [License](#license)
+    - [Contributing](#contributing)
+    - [Tests](#tests)
+    - [Questions](#questions)
 
+    ## Installation
+
+    ${installation}
+
+    ## Usage
+
+    ${usage}
+
+    ## License
+
+    This project is licensed under the ${license} license.
+
+    ## Contributing
+
+    ${contributing}
+
+    ## Tests
+
+    ${tests}`;
+
+  fs.writeFile('README.md', content, err => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log('README.md file generated!');
+  });
 }
 
 // TODO: Create a function to initialize app
 function init() {
-    inquirer.prompt(questions);
-    .then(answers) => {
-        const 
-    }
+    inquirer.prompt(questions)
+    .then(answers => {
+        writeToFile(answers);
+    })
 }
 
 // Function call to initialize app
