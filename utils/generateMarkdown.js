@@ -56,13 +56,14 @@ function generateMarkdown(data) {
 
   ${renderLicenseBadge(data.license)}
   
-  ## Description
+  ## Description:
 
   ${data.description}
 
   # ScreenCastify video link:
 
-  ## Table of Contents
+
+  ## Table of Contents:
 
   - [Installation](#installation)
   - [Usage](#usage)
@@ -73,32 +74,31 @@ function generateMarkdown(data) {
   - [Resources](#resources)
   <hr>
   
-  ## Installation
+  ## Installation:
 
   ${data.installation}
 
-  ## Usage
+  ## Usage:
 
   ${data.usage}
 
-  ## License
+  ## License:
 
   ${renderLicenseBadge(data.license)}
   <br>
   ${renderLicenseSection(data.license)}
 
 
-  ## Contributing
+  ## Contributing:
 
   ${data.contributing}
 
-  ## Tests
+  ## Tests:
 
   ${data.tests}
 
+  ## Questions:
   <hr>
-
-  ## Questions
 
   If you have any questions or would like to reach me please use one of the methods below:
 
@@ -106,9 +106,8 @@ function generateMarkdown(data) {
 
   GitHub: github.com/${data.github}
 
+  ## Resources:
   <hr>
-
-  ## Resources
   
   ${data.resources}`;
 }
