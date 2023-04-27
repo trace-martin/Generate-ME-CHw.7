@@ -107,7 +107,6 @@ function generateMarkdown(data) {
   GitHub: github.com/${data.github}
 
   ## Resources:
-  <hr>
   
   ${data.resources}`;
 }
